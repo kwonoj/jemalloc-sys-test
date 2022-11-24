@@ -1,0 +1,501 @@
+{
+  "checksum": "67be64d90c3f502e2a4a09955ff228ee054d5713c347086c1bcdc724289c0dd2",
+  "crates": {
+    "cc 1.0.77": {
+      "name": "cc",
+      "version": "1.0.77",
+      "repository": {
+        "Http": {
+          "url": "https://crates.io/api/v1/crates/cc/1.0.77/download",
+          "sha256": "e9f73505338f7d905b19d18738976aae232eb46b8efc15554ffc56deb5d9ebe4"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "cc",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "Binary": {
+            "crate_name": "gcc-shim",
+            "crate_root": "src/bin/gcc-shim.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "cc",
+      "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
+        "edition": "2018",
+        "version": "1.0.77"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "cty 0.2.2": {
+      "name": "cty",
+      "version": "0.2.2",
+      "repository": {
+        "Http": {
+          "url": "https://crates.io/api/v1/crates/cty/0.2.2/download",
+          "sha256": "b365fabc795046672053e29c954733ec3b05e4be654ab130fe8f1f94d7051f35"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "cty",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "cty",
+      "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
+        "edition": "2015",
+        "version": "0.2.2"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "fs_extra 1.2.0": {
+      "name": "fs_extra",
+      "version": "1.2.0",
+      "repository": {
+        "Http": {
+          "url": "https://crates.io/api/v1/crates/fs_extra/1.2.0/download",
+          "sha256": "2022715d62ab30faffd124d40b76f4134a550a87792276512b18d63272333394"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "fs_extra",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "fs_extra",
+      "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
+        "edition": "2015",
+        "version": "1.2.0"
+      },
+      "license": "MIT"
+    },
+    "jemalloc-sys-test 0.1.0": {
+      "name": "jemalloc-sys-test",
+      "version": "0.1.0",
+      "repository": null,
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "jemalloc_sys_test",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "jemalloc_sys_test",
+      "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
+        "deps": {
+          "common": [],
+          "selects": {
+            "cfg(all(target_os = \"linux\", target_env = \"gnu\", any(target_arch = \"x86_64\", target_arch = \"aarch64\")))": [
+              {
+                "id": "tikv-jemallocator 0.4.3",
+                "target": "tikv_jemallocator"
+              }
+            ],
+            "cfg(not(target_os = \"linux\"))": [
+              {
+                "id": "mimalloc-rust 0.2.0",
+                "target": "mimalloc_rust"
+              }
+            ]
+          }
+        },
+        "edition": "2021",
+        "version": "0.1.0"
+      },
+      "license": null
+    },
+    "libc 0.2.137": {
+      "name": "libc",
+      "version": "0.2.137",
+      "repository": {
+        "Http": {
+          "url": "https://crates.io/api/v1/crates/libc/0.2.137/download",
+          "sha256": "fc7fcc620a3bff7cdd7a365be3376c97191aeaccc2a603e600951e452615bf89"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "libc",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build_script_build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "libc",
+      "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "libc 0.2.137",
+              "target": "build_script_build"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "0.2.137"
+      },
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "mimalloc-rust 0.2.0": {
+      "name": "mimalloc-rust",
+      "version": "0.2.0",
+      "repository": {
+        "Http": {
+          "url": "https://crates.io/api/v1/crates/mimalloc-rust/0.2.0/download",
+          "sha256": "6973866e0bc6504c03a16b6817b7e70839cc8a1dbd5d6dab00c65d8034868d8b"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "mimalloc_rust",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "mimalloc_rust",
+      "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "cty 0.2.2",
+              "target": "cty"
+            },
+            {
+              "id": "mimalloc-rust-sys 1.7.6-source",
+              "target": "mimalloc_rust_sys"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2021",
+        "version": "0.2.0"
+      },
+      "license": "MIT"
+    },
+    "mimalloc-rust-sys 1.7.6-source": {
+      "name": "mimalloc-rust-sys",
+      "version": "1.7.6-source",
+      "repository": {
+        "Http": {
+          "url": "https://crates.io/api/v1/crates/mimalloc-rust-sys/1.7.6-source/download",
+          "sha256": "7a50daf45336b979a202a19f53b4b382f2c4bd50f392a8dbdb4c6c56ba5dfa64"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "mimalloc_rust_sys",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build_script_build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "mimalloc_rust_sys",
+      "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "cty 0.2.2",
+              "target": "cty"
+            },
+            {
+              "id": "mimalloc-rust-sys 1.7.6-source",
+              "target": "build_script_build"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2021",
+        "version": "1.7.6-source"
+      },
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "cc 1.0.77",
+              "target": "cc"
+            }
+          ],
+          "selects": {}
+        }
+      },
+      "license": "MIT"
+    },
+    "tikv-jemalloc-sys 0.4.3+5.2.1-patched.2": {
+      "name": "tikv-jemalloc-sys",
+      "version": "0.4.3+5.2.1-patched.2",
+      "repository": {
+        "Http": {
+          "url": "https://crates.io/api/v1/crates/tikv-jemalloc-sys/0.4.3+5.2.1-patched.2/download",
+          "sha256": "a1792ccb507d955b46af42c123ea8863668fae24d03721e40cad6a41773dbb49"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "tikv_jemalloc_sys",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build_script_build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "tikv_jemalloc_sys",
+      "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
+        "crate_features": [
+          "background_threads_runtime_support",
+          "disable_initial_exec_tls"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "libc 0.2.137",
+              "target": "libc"
+            },
+            {
+              "id": "tikv-jemalloc-sys 0.4.3+5.2.1-patched.2",
+              "target": "build_script_build"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.4.3+5.2.1-patched.2"
+      },
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "cc 1.0.77",
+              "target": "cc"
+            },
+            {
+              "id": "fs_extra 1.2.0",
+              "target": "fs_extra"
+            }
+          ],
+          "selects": {}
+        },
+        "links": "jemalloc"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "tikv-jemallocator 0.4.3": {
+      "name": "tikv-jemallocator",
+      "version": "0.4.3",
+      "repository": {
+        "Http": {
+          "url": "https://crates.io/api/v1/crates/tikv-jemallocator/0.4.3/download",
+          "sha256": "a5b7bcecfafe4998587d636f9ae9d55eb9d0499877b88757767c346875067098"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "tikv_jemallocator",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "tikv_jemallocator",
+      "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
+        "crate_features": [
+          "background_threads_runtime_support",
+          "default",
+          "disable_initial_exec_tls"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "libc 0.2.137",
+              "target": "libc"
+            },
+            {
+              "id": "tikv-jemalloc-sys 0.4.3+5.2.1-patched.2",
+              "target": "tikv_jemalloc_sys"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.4.3"
+      },
+      "license": "MIT/Apache-2.0"
+    }
+  },
+  "binary_crates": [
+    "cc 1.0.77"
+  ],
+  "workspace_members": {
+    "jemalloc-sys-test 0.1.0": ""
+  },
+  "conditions": {
+    "cfg(all(target_os = \"linux\", target_env = \"gnu\", any(target_arch = \"x86_64\", target_arch = \"aarch64\")))": [
+      "aarch64-unknown-linux-gnu",
+      "x86_64-unknown-linux-gnu"
+    ],
+    "cfg(not(target_os = \"linux\"))": [
+      "aarch64-apple-darwin",
+      "aarch64-apple-ios",
+      "aarch64-apple-ios-sim",
+      "aarch64-linux-android",
+      "armv7-linux-androideabi",
+      "i686-apple-darwin",
+      "i686-linux-android",
+      "i686-pc-windows-msvc",
+      "i686-unknown-freebsd",
+      "riscv32imc-unknown-none-elf",
+      "wasm32-unknown-unknown",
+      "wasm32-wasi",
+      "x86_64-apple-darwin",
+      "x86_64-apple-ios",
+      "x86_64-linux-android",
+      "x86_64-pc-windows-msvc",
+      "x86_64-unknown-freebsd"
+    ]
+  }
+}

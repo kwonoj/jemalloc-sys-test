@@ -1,0 +1,13 @@
+load("@jemalloc-sys-test-index//:defs.bzl", "crate_deps")
+load("@rules_rust//rust:defs.bzl", "rust_library")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "jemalloc_sys_test",
+    srcs = glob(["src/**/*.rs"]),
+    deps = crate_deps([
+            "mimalloc-rust",
+            "tikv-jemallocator",
+        ])
+)

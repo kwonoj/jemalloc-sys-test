@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  pull_request:
+    types: ['opened', 'reopened', 'synchronize']
+  push:
+    branches:
+      - main
+
+env:
+  CI: 1
+  CARGO_INCREMENTAL: 0
+  CARGO_TERM_COLOR: "always"
+  DIFF: 0
+  RUST_LOG: "off"
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+      - uses: bazelbuild/setup-bazelisk@v2
+      - name: Mount bazel cache
+        uses: actions/cache@v3
+        with:
+          path: "/home/runner/.cache/bazel"
+          key: bazel
+      - name: Cache rust artifacts
+        uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: bazel-cargo
+          cache-on-failure: true
+      - name: Run bazel build for all targets
+        run: |
+          bazel build //...
+          bazel test //...
