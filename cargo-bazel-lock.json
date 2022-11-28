@@ -1,5 +1,5 @@
 {
-  "checksum": "67be64d90c3f502e2a4a09955ff228ee054d5713c347086c1bcdc724289c0dd2",
+  "checksum": "6e62c604715a60ef5e6c1136219809df66500fbc38bee9a964ee543418ef0472",
   "crates": {
     "cc 1.0.77": {
       "name": "cc",
@@ -355,18 +355,6 @@
               "exclude": []
             }
           }
-        },
-        {
-          "BuildScript": {
-            "crate_name": "build_script_build",
-            "crate_root": "build.rs",
-            "srcs": {
-              "include": [
-                "**/*.rs"
-              ],
-              "exclude": []
-            }
-          }
         }
       ],
       "library_target_name": "tikv_jemalloc_sys",
@@ -383,35 +371,12 @@
             {
               "id": "libc 0.2.137",
               "target": "libc"
-            },
-            {
-              "id": "tikv-jemalloc-sys 0.4.3+5.2.1-patched.2",
-              "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
         "version": "0.4.3+5.2.1-patched.2"
-      },
-      "build_script_attrs": {
-        "data_glob": [
-          "**"
-        ],
-        "deps": {
-          "common": [
-            {
-              "id": "cc 1.0.77",
-              "target": "cc"
-            },
-            {
-              "id": "fs_extra 1.2.0",
-              "target": "fs_extra"
-            }
-          ],
-          "selects": {}
-        },
-        "links": "jemalloc"
       },
       "license": "MIT/Apache-2.0"
     },
